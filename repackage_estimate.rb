@@ -37,7 +37,10 @@ class RepackageEstimate
 	end
 
 	def format_num_people
-		@num_people = @num_people.gsub(/[^\d]/,'').to_i
+		if @num_people.class == String
+			@num_people = @num_people.gsub(/[^\d]/,'').to_i
+		end
+		@num_people
 	end
 
 
