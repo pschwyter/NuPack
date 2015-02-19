@@ -7,21 +7,30 @@ class RepackageEstimate
 		@category = category
 	end
 
-	def repackage_cost
+	def estimate
+		# format user inputs
+		format_base_cost
 		format_category
 		format_num_people
 
 		flat_markup = 0.05
 		# flat markup is calculated first
-		cost = base_cost * (1 + flat_markup)
+		estimate = base_cost * (1 + flat_markup)
 
 		# calculate all other markups on top of base markup
-		cost = cost * (1 + labour_markup + category_markup)
+		estimate = estimate * (1 + labour_markup + category_markup)
 		
-		convert_to_dollars(cost)
+		convert_to_dollars(estimate)
 	end
 
 	private
+
+	def format_base_cost
+		if @base_cost.class == String
+			@base_cost = @base_cost.gsub(/[^\d.]/,'').to_f
+		end
+		@base_cost
+	end
 
 	def format_category
 		@category.downcase!
