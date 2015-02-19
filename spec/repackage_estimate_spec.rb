@@ -11,25 +11,21 @@ describe RepackageEstimate do
 		end
 	end
 
-	describe "#repackage_cost" do
-
-		before :each do
-			@repackage_estimate = RepackageEstimate.new('$1299.99','3 people', 'food')
-		end
+	describe "#estimate" do
 
 		it "should return the correct cost when passed a 'food' estimate" do
-			food_estimate = RepackageEstimate.new(1299.99,'3 people', 'food')
-			expect(food_estimate.repackage_cost).to eq('$1591.58')
+			food_estimate = RepackageEstimate.new('$1299.99','3 people', 'food')
+			expect(food_estimate.estimate).to eq('$1591.58')
 		end
 
 		it "should return the correct cost when passed a 'drugs' estimate" do
-			food_estimate = RepackageEstimate.new(5432,'1 person', 'drugs')
-			expect(food_estimate.repackage_cost).to eq('$6199.81')
+			drugs_estimate = RepackageEstimate.new('$5432.00','1 person', 'drugs')
+			expect(drugs_estimate.estimate).to eq('$6199.81')
 		end
 
 		it "should return the correct cost when passed a 'books' estimate" do
-			food_estimate = RepackageEstimate.new(12456.95,'4 people', 'books')
-			expect(food_estimate.repackage_cost).to eq('$13707.63')
+			books_estimate = RepackageEstimate.new('$12456.95','4 people', 'books')
+			expect(books_estimate.estimate).to eq('$13707.63')
 		end
 	end
 end
