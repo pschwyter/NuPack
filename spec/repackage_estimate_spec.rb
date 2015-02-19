@@ -12,7 +12,7 @@ describe RepackageEstimate do
 	end
 
 	describe "#estimate" do
-		describe " given the provided examples" do
+		describe "given the provided examples" do
 			it "should return the correct cost when passed the 'food' example" do
 				food_estimate = RepackageEstimate.new('$1299.99','3 people', 'food')
 				expect(food_estimate.estimate).to eq('$1591.58')
@@ -29,11 +29,19 @@ describe RepackageEstimate do
 			end
 		end
 
+		# testing the electronics category
 		it "should return the correct cost when passed an 'electronics' estimate" do
-			books_estimate = RepackageEstimate.new('$5752.95','3 people', 'electronics')
-			expect(books_estimate.estimate).to eq('$6378.87')
+			electronics_estimate = RepackageEstimate.new('$5752.95','3 people', 'electronics')
+			expect(electronics_estimate.estimate).to eq('$6378.87')
 		end		
 
+		# testing category capitalization
+		it "should return the correct cost when base_cost is an integer" do
+			books_estimate = RepackageEstimate.new(12456.95,'4 people', 'Books')
+			expect(books_estimate.estimate).to eq('$13707.63')
+		end
+
+		# testing integer datatypes
 		it "should return the correct cost when base_cost is an integer" do
 			books_estimate = RepackageEstimate.new(12456.95,'4 people', 'books')
 			expect(books_estimate.estimate).to eq('$13707.63')
@@ -43,6 +51,8 @@ describe RepackageEstimate do
 			books_estimate = RepackageEstimate.new('$12456.95',4, 'books')
 			expect(books_estimate.estimate).to eq('$13707.63')
 		end		
+
+
 	end
 
 end
