@@ -12,6 +12,7 @@ describe RepackageEstimate do
 	end
 
 	describe "#estimate" do
+
 		describe "given the provided examples" do
 			it "should return the correct cost when passed the 'food' example" do
 				food_estimate = RepackageEstimate.new('$1299.99','3 people', 'food')
@@ -51,7 +52,6 @@ describe RepackageEstimate do
 			books_estimate = RepackageEstimate.new('$12456.95',4, 'books')
 			expect(books_estimate.estimate).to eq('$13707.63')
 		end		
-
 
 	end
 

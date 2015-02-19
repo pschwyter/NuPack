@@ -8,12 +8,12 @@ class RepackageEstimate
 	end
 
 	def estimate
-		# format user inputs
 		format_base_cost
 		format_category
 		format_num_people
 
 		flat_markup = 0.05
+
 		# flat markup is calculated first
 		estimate = base_cost * (1 + flat_markup)
 
@@ -42,7 +42,6 @@ class RepackageEstimate
 		end
 		@num_people
 	end
-
 
 	def convert_to_dollars(unformated_cost)
 		rounded_cost = unformated_cost.round(2)
