@@ -8,6 +8,9 @@ class RepackageEstimate
 	end
 
 	def repackage_cost
+		format_category
+		format_num_people
+
 		flat_markup = 0.05
 		# flat markup is calculated first
 		cost = base_cost * (1 + flat_markup)
@@ -15,10 +18,21 @@ class RepackageEstimate
 		# calculate all other markups on top of base markup
 		cost = cost * (1 + labour_markup + category_markup)
 		
-		format_dollar_amount(cost)
+		convert_to_dollars(cost)
 	end
 
-	def format_dollar_amount(unformated_cost)
+	private
+
+	def format_category
+		@category.downcase!
+	end
+
+	def format_num_people
+		@num_people = @num_people.gsub(/[^\d]/,'').to_i
+	end
+
+
+	def convert_to_dollars(unformated_cost)
 		rounded_cost = unformated_cost.round(2)
 		"$#{rounded_cost}"
 	end
